@@ -38,7 +38,7 @@ Further explanation and testing of the CAN Bus Controller and CAN Bus transceive
 
 The CAN driver proved to work well communicating between modules. Custom drivers for SPI were created for the STM32 and ESP8266 in order to communicate to the MCP2515 controller.
 
-## ESP8266 Server Interface Testing
+## ESP8266 and Server Interface
 
 Further explanation and testing of the ESP8266 Wi-Fi communication, along with how information is logged can be viewed at:
 
@@ -71,7 +71,7 @@ The following circuit was used in order to test the driver for both the I2C and 
   <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCA9685_CIRCUIT.jpg">
 </p>
 
-A development board for the PCA9685 was utilized, created by Adafruit.
+A development board for the PCA9685 was utilized, created by Adafruit. 5V supply was used to power the servo motors and a 3.3V supply was used to power the PCA9685.
 
 Walking motions for the robot were configured at first by simulation within Fusion360 by AutoDesk. Angle values for the legs were found by utilizing simulated movement of joints within the legs. Values were later tweaked when testing occured with the printed components for the legs.
 
@@ -79,9 +79,48 @@ Walking motions for the robot were configured at first by simulation within Fusi
 
 Still needs completion...
 
+## User Interface from Server
+
+The user is able to interface with the HXM8 from the server being ran on the SBC. The user must only run, from the linux terminal:
+
+ ```shell
+HXM8_IA.py
+```
+
+This will then bring up the interface application as shown below (which is also the help screen):
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/SERVER_UI-HELPHOME.PNG">
+</p>
+
+This then allows the user to type in any of the commands shown in the command console to:
+- Access the different modes of the HXM8
+- Display the current day's logging information
+- Send the HXM8 back to its home base
+- Bring up the help menu
+- Exit the user interface
+
+Shown below is the user interface for manual mode when selected:
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/SERVER_UI-MANUAL.PNG">
+</p>
+
+As can be seen, when the keys are hit to send the robot in different directions, they are printed onto the terminal. When the user wants to exit manual mode, they must only hit n to send HXM8 back into automatic mode.
+
+The next screen show in the logging screen which displays the logging information of that day:
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/SERVER_UI-LOG.PNG">
+</p>
+
+Logging information is displayed on this screen. This test was show with just the very simple SYSSTART command shown in the ESP8266 and **Server Interface** section.
+
 # Hardware Design
 
 ## Circuit Design
+
+### Schematic Overview
 
 All modules from the development kits, the PCA9685, STM32F031K6 and ESP8266, along with the custom created circuits for the MCP2515/MCP2562 were combined into the creation of a PCB. The development circuits were heavily referenced along with much of the material on the datasheets of each module for schematic design.
 The schematics for the modules are shown below:
@@ -116,3 +155,17 @@ Lastly, on the MCP2562, there is a dip switch in place that can be used to termi
 </p>
 
 The second page shows the ESP8266 and its CAN Controller and Tranceiver. The ESP8266 was laid out according to its datasheet. An autoprogramming circuit was designed in order to avoid having to hit the RESET and GPIO0 switches to place the MCU into programming mode. Since there is no internal flash on the ESP8266, it communicates over SPI to a Flash Memory module to read the firmware flashed when programming. 
+
+### PCB Layout
+
+When designing the PCB, a small area was needed in order to keep the body of the HXM8 as small as possible. This was required in order to reduce weight and size of the overall project to ensure movement flowed smoothly. A 4 layer stackup was needed in order to obtain good RF qualities within the board. The 1st layer consisted of all traces for signaling and powering ICs, the second layer was a ground pour for, the third layer was the power plane for 5V and 3.3V and the bottom layer was used for traces and also consisted of a ground pour. The overall dimensions of the PCB ended up being about *70mmX70mm*. The following are the Gerber File layouts of the front and back of the PCB:
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_1.PNG">
+</p>
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_2.PNG">
+</p>
+
+The ESP8266 was laid out at the top of the PCB in order to allow for the impedence matched circuit and traces to the antenna to be as short as possible to the edge of the board and connected to an SMA connector off the edge of the board. This MCP2515 modules are on the left hand of the board. The STM32 is in the middle and the PCA 9685 is just to the right of that. The connectors for the servo motors are on both sides of the boards. The power distribution is located at the bottom of the board. The two 5V regulators right next to one another and the 3.3V regulator off to the right. LEDs are used to determine when the board is powered up. 
