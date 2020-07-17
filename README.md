@@ -169,3 +169,52 @@ When designing the PCB, a small area was needed in order to keep the body of the
 </p>
 
 The ESP8266 was laid out at the top of the PCB in order to allow for the impedence matched circuit and traces to the antenna to be as short as possible to the edge of the board and connected to an SMA connector off the edge of the board. This MCP2515 modules are on the left hand of the board. The STM32 is in the middle and the PCA 9685 is just to the right of that. The connectors for the servo motors are on both sides of the boards. The power distribution is located at the bottom of the board. The two 5V regulators right next to one another and the 3.3V regulator off to the right. LEDs are used to determine when the board is powered up. 
+
+PCB when received by manufacturer:
+
+<p align="center">
+  <img width="600" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_IN_HAND.jpg">
+</p>
+
+## 3D Printed Prototype
+
+The prototype of the project includes 2 basic components; the legs and the body.
+Shown below is the prototype assembly of the HXM8:
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/HXM8_ASSEMBLY.PNG">
+</p>
+
+Looking at the body design, a lot of consideration went into making sure that the board got a sufficient amount exposure to air to ensure the heatsinks on the LM1084IT-5.0s worked effectively. There is also many holes placed on the body for when external components are ready to be added to the board. *The future components will include the K210/Camera module and the TOF sensor modules along with a battery charging module*. Cutouts were made in order to allow access to the programming pins of HXM8 for the STM32 and ESP8266 along with a cutout for the CAN Bus connector. 
+
+The leg assembly is as follows: 
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/HXM8_LEG.PNG">
+</p>
+
+Each leg consists of an upper thigh portion, mid-thigh portion and lower leg portion with three servo motors per leg. Parts were snap to fit together on the legs and where this was not possible, M3 nuts and bolts were used to connect components together. 
+
+<p align="center">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/HXM8_BODY_PCB.PNG">
+</p>
+
+The PCB is press to fit in the body of HXM8 with the two Li-Ion batteries placed below the PCB. 
+The body was connected to the legs using M3 nuts and bolts.
+
+## Bill of Materials
+
+A Bill of Material is viewable from the BOM folder within the repository. Also, a .xlsx file containing the components bought from Digikey is available as well, that can be uploaded into the cart in Digikey. 
+
+
+# Testing of Project
+Some tests of the CAN Interface, and WiFi interface can be seen in the respective repository.
+
+## Manual Mode Testing
+
+For the manual mode, testing was done on the User Interface from the SBC server. A Raspberry Pi was used for this. A remote connection was opened from my Windows PC to the SBC and the user interface for HXM8 was opened. Testing was setup with just one leg of the robot, and the CAN Bus circuits in between the ESP8266 and the STM32. The only direction that is configured to run for this testing setup on the STM32 is forward. When 'w' is hit on the keyboard from the user interface, immedietly the leg begins the forward pattern programmed to the controller. Whenever another key signifying a direction is hit, the STM32 completes that cycle of forward motion and then immedietly stopsLatency is very minimal in the setup of the devices. The test can be seen at the following link:
+
+<p align="center">
+  <a href=https://www.youtube.com/watch?v=ujLYvB6PUw4>HXM8 Server Interface Manual Mode Test</a>
+</p>
+
