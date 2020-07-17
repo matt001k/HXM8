@@ -161,11 +161,11 @@ The second page shows the ESP8266 and its CAN Controller and Tranceiver. The ESP
 When designing the PCB, a small area was needed in order to keep the body of the HXM8 as small as possible. This was required in order to reduce weight and size of the overall project to ensure movement flowed smoothly. A 4 layer stackup was needed in order to obtain good RF qualities within the board. The 1st layer consisted of all traces for signaling and powering ICs, the second layer was a ground pour for, the third layer was the power plane for 5V and 3.3V and the bottom layer was used for traces and also consisted of a ground pour. The overall dimensions of the PCB ended up being about *70mmX70mm*. The following are the Gerber File layouts of the front and back of the PCB:
 
 <p align="center">
-  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_3.PNG">
+  <img width="600" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_3.PNG">
 </p>
 
 <p align="center">
-  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_2.PNG">
+  <img width="600" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_2.PNG">
 </p>
 
 The ESP8266 was laid out at the top of the PCB in order to allow for the impedence matched circuit and traces to the antenna to be as short as possible to the edge of the board and connected to an SMA connector off the edge of the board. This MCP2515 modules are on the left hand of the board. The STM32 is in the middle and the PCA 9685 is just to the right of that. The connectors for the servo motors are on both sides of the boards. The power distribution is located at the bottom of the board. The two 5V regulators right next to one another and the 3.3V regulator off to the right. LEDs are used to determine when the board is powered up. 
