@@ -161,7 +161,7 @@ The second page shows the ESP8266 and its CAN Controller and Tranceiver. The ESP
 When designing the PCB, a small area was needed in order to keep the body of the HXM8 as small as possible. This was required in order to reduce weight and size of the overall project to ensure movement flowed smoothly. A 4 layer stackup was needed in order to obtain good RF qualities within the board. The 1st layer consisted of all traces for signaling and powering ICs, the second layer was a ground pour for, the third layer was the power plane for 5V and 3.3V and the bottom layer was used for traces and also consisted of a ground pour. The overall dimensions of the PCB ended up being about *70mmX70mm*. The following are the Gerber File layouts of the front and back of the PCB:
 
 <p align="center">
-  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_1.PNG">
+  <img width="" height="" src="https://github.com/matt001k/HXM8/blob/master/Photos/PCB_3.PNG">
 </p>
 
 <p align="center">
