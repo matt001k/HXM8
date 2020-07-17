@@ -38,12 +38,17 @@ The CAN driver proved to work well communicating between modules.
 
 ## ESP8266 Server Interface Testing
 
-Further explanation and testing of the ESP8266 Wi-Fi communication can be viewed at:
+Further explanation and testing of the ESP8266 Wi-Fi communication, along with how information is logged can be viewed at:
 
 <p align="center">
   <a href=https://github.com/matt001k/CAN_WIFI_MODULE>CAN_WIFI_COMMUNICATION</a>
 </p>
 
 Messages were able to be communicated to and from the server through the ESP8266 and over the CAN Bus. 
+
+## STM32 and PCA 9685 Interface
+
+
+## Circuit Design
 
 
