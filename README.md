@@ -132,7 +132,7 @@ The schematics for the modules are shown below:
 The first page of the schematic shows the STM32 and its modules along with the power distribution for the circuit. Incoming power is regulated from two Li-Ion batteries in series. The motors and MCP2562 need a 5V regulated output, and both MCUs, the MCP2515 and the PCA9685 all need a 3.3V regulated output. The power modules were carefully calculated to determine the needed output current. For the 5V regulators, the worse case scenario was observed, if all servo motors had stalled they would be pulling 800mA each, and there still should be enough power to ensure that the two MCP2562's still are able to run with current drawing at 70mA each per IC. The calculated current is as follows:
 
 <p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=(12 * .7A)%2B(2 * .07A) = 9.74A">
+  <img src="https://render.githubusercontent.com/render/math?math=(12 * .8A)%2B(2 * .07A) = 9.74A">
 </p>
 
 It was decided that 10A output would be needed. In order to do this, two LDO regulaters were used split the current between two sets of six servo motors. One regulator also fed the MCP2562 tranceivers as well. LDO regulators were used instead of a single switching regulator due to space constraints of the PCB and wanting to use just the top layer for component layouts. The two regulators used are the LM1084IT-5.0s by Texas Instruments.
